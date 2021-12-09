@@ -1,17 +1,15 @@
 package org.academiadecodigo.bootcamp65.services;
 
 import org.academiadecodigo.bootcamp65.model.User;
+import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
 
+@Service
 public class UserServiceImpl implements UserService {
 
-    private List<User> userList;
-
-    public UserServiceImpl() {
-        userList = new LinkedList<>();
-    }
+    private List<User> userList = new LinkedList<>();
 
     public List<User> list() {
         for(User user: userList) {
