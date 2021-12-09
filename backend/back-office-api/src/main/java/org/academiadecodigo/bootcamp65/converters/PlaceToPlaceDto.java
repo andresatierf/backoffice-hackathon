@@ -11,8 +11,8 @@ public class PlaceToPlaceDto extends AbstractConverter<Place, PlaceDto>{
 
         placeDto.setId(place.getId());
         placeDto.setName(place.getName());
-        placeDto.setLat(placeDto.getLat());
-        placeDto.setLon(placeDto.getLon());
+        placeDto.setLat(place.getLat());
+        placeDto.setLon(place.getLon());
 
         return placeDto;
     }
