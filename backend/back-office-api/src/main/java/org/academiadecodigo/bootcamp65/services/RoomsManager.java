@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp65.services;
 
+import org.academiadecodigo.bootcamp65.model.Place;
 import org.academiadecodigo.bootcamp65.model.Room;
 import org.academiadecodigo.bootcamp65.model.RoomType;
 
