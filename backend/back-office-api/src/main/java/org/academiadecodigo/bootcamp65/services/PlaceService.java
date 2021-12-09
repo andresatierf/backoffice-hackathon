@@ -3,32 +3,27 @@ package org.academiadecodigo.bootcamp65.services;
 import org.academiadecodigo.bootcamp65.model.Place;
 import org.academiadecodigo.bootcamp65.model.Room;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PlaceService {
 
-    private List<Place> places = new LinkedList<>();
+    private Map<Integer, Place> places = new HashMap<>();
 
     public List<Place> list() {
-        return places;
+        return new ArrayList<>(places.values());
     }
 
     public Place get(int id) {
-        return places.stream()
-                .filter(place -> place.getId() == id)
-                .collect(Collectors.toList())
-                .get(0);
+        return places.get(id);
     }
 
     public void add(Place place) {
-        places.add(place);
+        places.put(place.getId(), place);
     }
 
     public void remove(int id) {
-        places.remove(places.get(id));
+        places.remove(id);
     }
 
     public void addRoom(Integer id, Room room) {

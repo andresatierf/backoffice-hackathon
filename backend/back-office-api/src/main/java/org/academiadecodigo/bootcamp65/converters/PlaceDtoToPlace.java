@@ -4,7 +4,7 @@ import org.academiadecodigo.bootcamp65.command.PlaceDto;
 import org.academiadecodigo.bootcamp65.model.Place;
 import org.academiadecodigo.bootcamp65.services.PlaceService;
 
-public class PlaceDtotoPlace extends AbstractConverter<PlaceDto, Place>{
+public class PlaceDtoToPlace extends AbstractConverter<PlaceDto, Place>{
 
     private PlaceService placeService;
 
