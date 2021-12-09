@@ -15,4 +15,5 @@ public enum RoomType {
     SERVER_ROOM(10);
 
     RoomType(double price){}
+
 }

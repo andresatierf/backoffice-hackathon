@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp65.services;
 
 import org.academiadecodigo.bootcamp65.model.Place;
+import org.academiadecodigo.bootcamp65.model.Room;
 
 import java.util.LinkedList;
 import java.util.List;

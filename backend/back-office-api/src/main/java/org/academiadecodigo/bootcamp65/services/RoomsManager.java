@@ -9,14 +9,14 @@ import java.util.List;
 
 public class RoomsManager {
 
-    private LinkedList<Room> roomsList;
+    private List<Room> roomsList;
     private LinkedList<Place> placeList;
 
     private PlaceService placeService;
 
     private Place place;
 
-    public void set(PlaceService placeService){
+    public void setPlaceService(PlaceService placeService){
         this.placeService = placeService;
     }
 
@@ -32,7 +32,7 @@ public class RoomsManager {
         room.setId(roomNr++);
         room.setRoomType(roomType);
 
-        place.addRoom(room);
+        placeService.addRoom(placeId, room);
 
     }
 
