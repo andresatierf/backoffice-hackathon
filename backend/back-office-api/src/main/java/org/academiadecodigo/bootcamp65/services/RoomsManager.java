@@ -21,9 +21,7 @@ public class RoomsManager {
 
     public void createRoom(int placeId, RoomType roomType){
 
-        placeList = placeService.list();
-
-        place = placeList.get(placeId);
+        place = placeService.get(placeId);
 
         roomsList = place.getRooms();
 
@@ -39,9 +37,7 @@ public class RoomsManager {
 
     public void deleteRoom(int placeId, int roomId){
 
-        placeList = placeService.list();
-
-        place = placeList.get(placeId);
+        place = placeService.get(placeId);
 
         roomsList = place.getRooms();
 
