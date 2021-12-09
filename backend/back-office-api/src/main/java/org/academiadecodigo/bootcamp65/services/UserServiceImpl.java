@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public void remove(int id) {
+    public void remove(Integer id) {
         for(User user: userList) {
-            if (user.getId() == id) {
+            if (user.getId().equals(id)) {
                 userList.remove(user);
             }
         }
@@ -41,9 +41,9 @@ public class UserServiceImpl implements UserService {
         return user;
     }
 
-    public User get(int id) {
+    public User get(Integer id) {
         for(User user: userList) {
-            if (user.getId() == id) {
+            if (user.getId().equals(id)) {
                 return user;
             }
         }
