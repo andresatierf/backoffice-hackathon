@@ -24,7 +24,7 @@ public class RoomsManager {
 
         place = placeService.get(placeId);
 
-        roomsList = place.getRooms();
+        roomsList = place.getRoomList();
 
         int roomNr = roomsList.size();
 
@@ -40,11 +40,7 @@ public class RoomsManager {
 
         place = placeService.get(placeId);
 
-        roomsList = place.getRooms();
-
-        roomsList.remove(roomId);
-
-        place.setList(roomsList);
+        place.removeRoom(roomId);
 
     }
 }
