@@ -31,6 +31,7 @@ public class RoomsManager {
         Room room = new Room();
         room.setId(roomNr++);
         room.setRoomType(roomType);
+        room.setPlaceId(placeId);
 
         placeService.addRoom(placeId, room);
 
@@ -42,6 +43,18 @@ public class RoomsManager {
 
         place.removeRoom(roomId);
 
+    }
+
+    public Room getRoom(int placeId, int roomId){
+
+        place = placeService.get(placeId);
+
+        return place.getRoom(roomId);
+
+    }
+
+    public int getRoomPlace(Room room){
+        return room.getPlaceId();
     }
 }
 
