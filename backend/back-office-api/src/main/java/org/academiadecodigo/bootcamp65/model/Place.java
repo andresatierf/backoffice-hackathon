@@ -12,7 +12,7 @@ public class Place {
     private double lat;
     private double lon;
 
-    private List<Room> roomList = new ArrayList<>();
+    //private List<Room> roomList = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -46,7 +46,7 @@ public class Place {
         this.lon = lon;
     }
 
-    public List<Room> getRoomList() {
+    /*public List<Room> getRoomList() {
         return roomList;
     }
 
@@ -69,7 +69,7 @@ public class Place {
         roomList = roomList.stream()
                 .filter(room -> room.getId() != id)
                 .collect(Collectors.toList());
-    }
+    }*/
 
     @Override
     public String toString() {
