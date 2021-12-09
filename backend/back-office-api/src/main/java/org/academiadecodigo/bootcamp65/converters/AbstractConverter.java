@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public abstract class AbstractConverter<S, T> implements Converter<S, T>{
+public abstract class AbstractConverter<S, T> implements Converter<S, T> {
 
     public List<T> convert(List<S> listToConvert) {
         return listToConvert.stream()

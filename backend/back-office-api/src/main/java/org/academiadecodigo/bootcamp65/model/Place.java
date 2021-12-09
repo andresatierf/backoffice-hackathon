@@ -1,5 +1,9 @@
 package org.academiadecodigo.bootcamp65.model;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Place {
 
     private Integer id;
@@ -7,6 +11,8 @@ public class Place {
 
     private double lat;
     private double lon;
+
+    private List<Room> roomList = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -38,6 +44,31 @@ public class Place {
 
     public void setLon(double lon) {
         this.lon = lon;
+    }
+
+    public List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(List<Room> roomList) {
+        this.roomList = roomList;
+    }
+
+    public void addRoom(Room room) {
+        roomList.add(room);
+    }
+
+    public Room getRoom(int id) {
+        return roomList.stream()
+                .filter(room -> room.getId() == id)
+                .collect(Collectors.toList())
+                .get(0);
+    }
+
+    public void removeRoom(int id) {
+        roomList = roomList.stream()
+                .filter(room -> room.getId() != id)
+                .collect(Collectors.toList());
     }
 
     @Override
