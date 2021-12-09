@@ -5,6 +5,7 @@ public class Room {
     private int id;
     private RoomType roomType;
     private boolean occupied;
+    private int placeId;
 
     public boolean isOccupied() {
         return occupied;
@@ -30,5 +31,12 @@ public class Room {
         this.id = id;
     }
 
+    public int getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(int placeId) {
+        this.placeId = placeId;
+    }
 }
 
