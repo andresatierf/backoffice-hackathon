@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp65.model;
 import java.util.List;
 
 public class User {
+    private int id;
     private String img;
     private String name;
     private int age;
@@ -17,6 +18,14 @@ public class User {
     private int rating;
     private int time;
     private int duration;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getImg() {
         return img;
