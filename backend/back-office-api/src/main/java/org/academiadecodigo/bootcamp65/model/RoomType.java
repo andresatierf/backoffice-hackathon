@@ -14,6 +14,15 @@ public enum RoomType {
     ARCHIVE(10),
     SERVER_ROOM(10);
 
-    RoomType(double price){}
+    private double price;
+
+    RoomType(double price){
+        this.price = price;
+    }
+
+    public double getPrice(){
+        return this.price;
+    }
+
 
 }
