@@ -1,6 +1,6 @@
-package org.academiadecodigo.bootcamp65.model;
+package org.academiadecodigo.bootcamp65.command;
 
-public class Place {
+public class PlaceDto {
 
     private Integer id;
     private String name;

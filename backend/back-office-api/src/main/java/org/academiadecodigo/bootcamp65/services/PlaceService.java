@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PlaceService {
 
-    List<Place> places = new LinkedList<>();
+    private List<Place> places = new LinkedList<>();
 
     public List<Place> list() {
         return places;
