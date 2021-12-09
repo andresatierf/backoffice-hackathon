@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp65.model.Place;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class PlaceService {
@@ -27,5 +28,15 @@ public class PlaceService {
 
     public void remove(int id) {
         places.remove(places.get(id));
+    }
+
+    public void addRoom(Integer id, Room room) {
+        Place place = get(id);
+
+        if (place == null) {
+            throw new NoSuchElementException();
+        }
+
+        place.addRoom(room);
     }
 }
