@@ -9,13 +9,13 @@ public class UserServiceImpl implements UserService {
 
     private List<User> userList;
 
-    private UserServiceImpl() {
+    public UserServiceImpl() {
         userList = new LinkedList<>();
     }
 
     public List<User> list() {
         for(User user: userList) {
-            System.out.println(user.getName());
+            System.out.println(user.getName() + ", id: " + user.getId());
         }
 
         return userList;
@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
 
     public User save(User user) {
         userList.add(user);
-
         return user;
     }
 
