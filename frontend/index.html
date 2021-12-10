@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <p id="userID" style="display:none">1</p>
     <header>
         <nav class="navbar navbar-light bg-dark">
             <div class="container-fluid d-flex justify-content-center">
@@ -22,6 +23,7 @@
                     <li class="nav-item p-1 me-5 h3">
                         <a id="feed-button" class="nav-link active" aria-current="page">Feed</a>
                     </li>
+
                     <li class="nav-item p-1 ms-5 h3">
                         <a id="matches-button" class="nav-link">Matches</a>
                     </li>
@@ -43,39 +45,38 @@
                         <button id="dropdown-duration-button" class="w-100 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDuration" data-bs-toggle="dropdown" aria-expanded="false">
                         Duration (Minutes)
                         </button>
-                        <ul class="dropdown-menu drop-duration" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">5</a></li>
-                            <li><a class="dropdown-item" href="#">10</a></li>
-                            <li><a class="dropdown-item" href="#">15</a></li>
-                            <li><a class="dropdown-item" href="#">20</a></li>
-                            <li><a class="dropdown-item" href="#">25</a></li>
-                            <li><a class="dropdown-item" href="#">30</a></li>
-                            <li><a class="dropdown-item" href="#">35</a></li>
-                            <li><a class="dropdown-item" href="#">40</a></li>
-                            <li><a class="dropdown-item" href="#">45</a></li>
-                            <li><a class="dropdown-item" href="#">50</a></li>
-                            <li><a class="dropdown-item" href="#">55</a></li>
-                            <li><a class="dropdown-item" href="#">60+</a></li>
+                        <ul class="dropdown-menu drop-duration w-100" value="" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item">5</a></li>
+                            <li><a class="dropdown-item">10</a></li>
+                            <li><a class="dropdown-item">15</a></li>
+                            <li><a class="dropdown-item">20</a></li>
+                            <li><a class="dropdown-item">25</a></li>
+                            <li><a class="dropdown-item">30</a></li>
+                            <li><a class="dropdown-item">35</a></li>
+                            <li><a class="dropdown-item">40</a></li>
+                            <li><a class="dropdown-item">45</a></li>
+                            <li><a class="dropdown-item">50</a></li>
+                            <li><a class="dropdown-item">55</a></li>
+                            <li><a class="dropdown-item">60+</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="search-bar-menu-container">
                     <div class="dropdown d-flex justify-content-center flex-row">
-                        <button id="dropdown-room-button" class="w-100 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonRoom" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button id="dropdown-room-button" value="" class="w-100 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonRoom" data-bs-toggle="dropdown" aria-expanded="false">
                         Room
                     </button>
-                        <ul id="dropdown-menu" class="dropdown-menu drop-room" aria-labelledby="dropdownMenuButtonRoom">
-                            <li><a class="dropdown-item" href="#">Closet</a></li>
-                            <li><a class="dropdown-item" href="#">Elevator</a></li>
+                        <ul id="dropdown-menu" class="w-100 dropdown-menu drop-room" aria-labelledby="dropdownMenuButtonRoom">
+
                         </ul>
                     </div>
                 </div>
-                <button class="search-bar-menu-container btn btn-danger">Search</button>
+                <button id="search-button" class="search-bar-menu-container btn btn-danger">Search</button>
             </div>
 
 
             <div id="feed-cards" class="p-5 d-flex justify-content-center align-items-center flex-column" style="overflow-y:scroll;">
-                <div id="card" class="card col-12 col-lg-2 rounded card shadow p-3 mb-5 bg-body rounded">
+                <!--<div id="card" class="card col-12 col-lg-2 rounded card shadow p-3 mb-5 bg-body">
                     <div class="w-100 d-flex justify-content-center">
                         <img class="profile-picture rounded-circle image-fluid" src=" images/profile-pic.png " alt="Profile Picture ">
                     </div>
@@ -92,22 +93,63 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde blanditiis obcaecati nesciunt, ipsa maiores exercitationem corrupti. Nostrum assumenda sit temporibus aliquam eligendi sed aut. Aliquam sequi ducimus fuga facere ab,
                             quo mollitia possimus perspiciatis culpa hic sapiente cupiditate reiciendis repudiandae.</p>
                         <div class="d-flex justify-content-center">
-                            <button class="w-50 btn btn-danger">Let's Fuck</button>
+                            <button class="w-50 btn btn-danger">Let's Boink</button>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </section>
 
 
         <section id="matches-section">
+            <div id="matches-cards" class="p-5 d-flex justify-content-center align-items-center flex-column" style="overflow-y:scroll;">
+                <div id="card" class="card-matches card col-12 col-lg-2 rounded card shadow p-3 mb-5 bg-body ">
+                    <div class="w-100 d-flex justify-content-center flex-column matches-images-container">
+                        <img class="image-fluid position-absolute room-image top-0" src="/images/room.png" alt="Room Photo">
+                        <div class="person-image-matches-container">
+                            <img class="profile-matches-picture rounded-circle image-fluid" src=" images/profile-pic.png " alt="Profile Picture ">
+                        </div>
+                        <div class="person-info-matches-container p-1 w-100 d-flex flex-row ">
+                            <div class="w-50 ps-3">
+                                <p class="h3 person-name-matches">Mário Vieira</p>
+                            </div>
+                            <div class="w-50 text-end pe-3">
+                                <p class="h5 person-location-matches">Praia da Vitória</p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="card-body">
+                        <div class="body-container">
+                            <div class="w-50 mb-1 dropdown d-flex justify-content-center flex-row">
+                                <button id="dropdown-car-button" class="w-100 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonRoom" data-bs-toggle="dropdown" aria-expanded="false">
+                                Car
+                            </button>
+                                <ul id="dropdown-menu-car" class="w-100 dropdown-menu drop-car" aria-labelledby="dropdownMenuButtonRoom">
+                                    <li><a class="dropdown-item" value="50">Limusine</a></li>
+                                    <li><a class="dropdown-item" value="50">Economy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="w-100 d-flex justify-content-center">
+                            <div class="w-50">
+                                <p id="carPrice" class="h5">Car : 50$</p>
+                                <p id="roomPrice" class="h5">Room : 50$</p>
+                                <p id="totalPrice" class="h5">Total: 100$</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button class="w-50 btn btn-danger">Finish</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
 
 
-    <script src="/scripts/scripts.js "></script>
+    <script src="/scripts/events.js" type="module"></script>
 </body>
 
 </html>
