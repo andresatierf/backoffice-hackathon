@@ -3,49 +3,41 @@ package org.academiadecodigo.bootcamp65.services;
 import org.academiadecodigo.bootcamp65.model.User;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private List<User> userList = new LinkedList<>();
+    private Map<Integer, User> userList = new HashMap<>();
+
+    protected Integer getNextId() {
+        return userList.isEmpty() ? 1 : Collections.max(userList.keySet()) + 1;
+    }
 
     public List<User> list() {
-        for(User user: userList) {
-            System.out.println(user.getName() + ", id: " + user.getId());
-        }
-
-        return userList;
+        return new ArrayList<>(userList.values());
     }
 
     public User save(User user) {
-        userList.add(user);
+        if (user.getId() == null) {
+            user.setId(getNextId());
+        }
+
+        userList.put(user.getId(), user);
         return user;
     }
 
     public void remove(Integer id) {
-        for(User user: userList) {
-            if (user.getId().equals(id)) {
-                userList.remove(user);
-            }
-        }
+        userList.remove(id);
     }
 
     public User update(User user) {
-        remove(user.getId());
         save(user);
 
         return user;
     }
 
     public User get(Integer id) {
-        for(User user: userList) {
-            if (user.getId().equals(id)) {
-                return user;
-            }
-        }
-
-        return null;
+        return userList.get(id);
     }
 }

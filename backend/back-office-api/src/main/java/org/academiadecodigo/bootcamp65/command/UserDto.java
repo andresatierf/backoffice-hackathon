@@ -1,7 +1,14 @@
 package org.academiadecodigo.bootcamp65.command;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import org.academiadecodigo.bootcamp65.model.GenderType;
+import org.academiadecodigo.bootcamp65.model.RoomType;
 
+import java.util.Date;
+
+@JsonIgnoreProperties
 public class UserDto {
     private Integer id;
     private String img;
@@ -16,8 +23,9 @@ public class UserDto {
     private double lon;
 
     private Integer rating;
-    private Integer time;
+    private Long time;
     private Integer duration;
+    private RoomType roomType;
 
     public Integer getId() {
         return id;
@@ -99,11 +107,11 @@ public class UserDto {
         this.rating = rating;
     }
 
-    public Integer getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
@@ -113,5 +121,13 @@ public class UserDto {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
     }
 }
