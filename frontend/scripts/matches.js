@@ -12,11 +12,9 @@ export function getMatches(userId) {
         success: populateMatches,
         error: undefined
     });
+}
 
 
-
-    function populateMatches(data) {
-        console.log(carTypes);
-    }
-
+function populateMatches(data) {
+    console.log(carTypes);
 }

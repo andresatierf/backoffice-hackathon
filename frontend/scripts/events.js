@@ -2,13 +2,15 @@ import { getMatches } from './matches.js';
 import { getUsers } from './feed.js';
 import { getRoomTypes } from './searchDropdowns.js'
 
-var userId = $("#userID").text();
-var carTypes
+var url_prefix = "http://192.168.1.113:8080/back-office/api"
+var carTypes;
 
+export { carTypes };
+
+var userId = $("#userID").text();
 $(document).ready(function() {
     getRoomTypes();
-
-
+    getCarsType();
 });
 
 function getCarsType() {
@@ -23,9 +25,8 @@ function getCarsType() {
     });
 }
 
-function carSuccess(response) {
-    carTypes = response;
-    //export carTypes;
+function carSuccess(data) {
+    carTypes = data;
 }
 
 
