@@ -9,15 +9,28 @@ public class Match {
 
     private Integer user1Id;
     private Integer user2Id;
-    private Integer roomId;
+    private Room room;
 
-    private Integer carId;
+    private Car car;
 
-    private Date date;
     private double finalPrice;
 
-    private Time time;
-    private Time duration;
+    private long time;
+    private int duration;
+
+    public Match() {
+    }
+
+    public Match(Integer id, Integer user1Id, Integer user2Id, Room room, Car car, double finalPrice, long time, int duration) {
+        this.id = id;
+        this.user1Id = user1Id;
+        this.user2Id = user2Id;
+        this.room = room;
+        this.car = car;
+        this.finalPrice = finalPrice;
+        this.time = time;
+        this.duration = duration;
+    }
 
     public Integer getId() {
         return id;
@@ -43,28 +56,20 @@ public class Match {
         this.user2Id = user2Id;
     }
 
-    public Integer getRoomId() {
-        return roomId;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
-    public Integer getCarId() {
-        return carId;
+    public Car getCar() {
+        return car;
     }
 
-    public void setCarId(Integer carId) {
-        this.carId = carId;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public double getFinalPrice() {
@@ -75,19 +80,19 @@ public class Match {
         this.finalPrice = finalPrice;
     }
 
-    public Time getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
-    public Time getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Time duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 }

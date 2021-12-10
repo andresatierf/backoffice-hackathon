@@ -1,23 +1,28 @@
 package org.academiadecodigo.bootcamp65.command;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.academiadecodigo.bootcamp65.model.Car;
+import org.academiadecodigo.bootcamp65.model.Room;
+
 import java.sql.Time;
 import java.util.Date;
 
+@JsonIgnoreProperties
 public class MatchDto {
 
     private Integer id;
 
     private Integer user1Id;
     private Integer user2Id;
-    private Integer roomId;
+    private Room room;
 
-    private Integer carId;
+    private Car car;
 
     private Date date;
     private double finalPrice;
 
-    private Time time;
-    private Time duration;
+    private long time;
+    private int duration;
 
     public Integer getId() {
         return id;
@@ -43,20 +48,20 @@ public class MatchDto {
         this.user2Id = user2Id;
     }
 
-    public Integer getRoomId() {
-        return roomId;
+    public Room getRoom() {
+        return room;
     }
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
+    public void setRoom(Room room) {
+        this.room = room;
     }
 
-    public Integer getCarId() {
-        return carId;
+    public Car getCar() {
+        return car;
     }
 
-    public void setCarId(Integer carId) {
-        this.carId = carId;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     public Date getDate() {
@@ -75,19 +80,19 @@ public class MatchDto {
         this.finalPrice = finalPrice;
     }
 
-    public Time getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(long time) {
         this.time = time;
     }
 
-    public Time getDuration() {
+    public int getDuration() {
         return duration;
     }
 
-    public void setDuration(Time duration) {
+    public void setDuration(int duration) {
         this.duration = duration;
     }
 }

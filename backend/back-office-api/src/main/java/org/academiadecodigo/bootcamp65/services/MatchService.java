@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 public class MatchService {
 
     private Map<Integer, Match> matches = new HashMap();
+    private Map<Integer, Match> finalMatches = new HashMap<>();
 
     public List<Match> list() {
         return new ArrayList<>(matches.values());
@@ -33,5 +34,13 @@ public class MatchService {
 
     public void remove(int id) {
         matches.remove(id);
+    }
+
+    public List<Match> listMatches() {
+        return new ArrayList<>(finalMatches.values());
+    }
+
+    public void addFinal(Match match) {
+        finalMatches.put(match.getId(), match);
     }
 }
