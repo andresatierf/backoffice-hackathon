@@ -3,21 +3,20 @@ package org.academiadecodigo.bootcamp65.controller;
 import org.academiadecodigo.bootcamp65.command.UserDto;
 import org.academiadecodigo.bootcamp65.converters.UserDtotoUser;
 import org.academiadecodigo.bootcamp65.converters.UserToUserDto;
+import org.academiadecodigo.bootcamp65.model.RoomType;
 import org.academiadecodigo.bootcamp65.model.User;
 import org.academiadecodigo.bootcamp65.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -26,29 +25,59 @@ public class UserController {
     private UserDtotoUser userDtotoUser;
     private UserToUserDto userToUserDto;
 
+
+
     @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
     @Autowired
-    public UserDtotoUser getUserDtotoUser() {
-        return userDtotoUser;
+    public void setUserDtotoUser(UserDtotoUser userDtotoUser) {
+        this.userDtotoUser = userDtotoUser;
     }
 
     @Autowired
-    public UserToUserDto getUserToUserDto() {
-        return userToUserDto;
+    public void setUserToUserDto(UserToUserDto userToUserDto) {
+        this.userToUserDto = userToUserDto;
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
     public ResponseEntity<List<UserDto>> listUsers() {
-
-        List<UserDto> customerDtos = userService.list().stream()
+        System.out.println("list sout");
+        List<UserDto> userDtos = userService.list().stream()
                 .map(customer -> userToUserDto.convert(customer))
                 .collect(Collectors.toList());
 
-        return new ResponseEntity<>(customerDtos, HttpStatus.OK);
+        return new ResponseEntity<>(userDtos, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/filter"})
+    public ResponseEntity<List<UserDto>> listFilteredUsers(@DateTimeFormat(pattern = "time") Long time, @RequestParam("duration") Integer duration, @RequestParam("room") RoomType roomType) {
+        System.out.println("list sout");
+        List<UserDto> userDtos = userService.list().stream()
+                .map(customer -> userToUserDto.convert(customer))
+                .collect(Collectors.toList());
+
+        List<UserDto> filteredDtos = new LinkedList<>();
+
+        for(UserDto userDto: userDtos) {
+            if (userDto.getTime() <= time && userDto.getDuration().equals(duration) && userDto.getRoomType() == roomType) {
+                filteredDtos.add(userDto);
+            }
+        }
+
+        System.out.println(time);
+        return new ResponseEntity<>(filteredDtos, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/{id}/updatematch")
+    public ResponseEntity<UserDto> editUserWithParams(@RequestBody UserDto userDto, @PathVariable Integer id) {
+
+        userDto.setId(id);
+
+        userService.save(userDtotoUser.convert(userDto));
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/{id}")
@@ -64,26 +93,23 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/", ""})
-    public ResponseEntity<?> addCustomer(@RequestBody UserDto userDto, BindingResult bindingResult, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<?> addUser(@RequestBody UserDto userDto, BindingResult bindingResult) {
+        System.out.println("addinfg");
 
-        if (bindingResult.hasErrors() || userDto.getId() != null) {
+        /*if (bindingResult.hasErrors() || userDto.getId() != null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        }*/
 
         User savedUser = userService.save(userDtotoUser.convert(userDto));
 
-        UriComponents uriComponents = uriComponentsBuilder.path("/api/customer/" + savedUser.getId()).build();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(uriComponents.toUri());
-
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+        System.out.println("added");
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.PUT, path = "/{id}")
-    public ResponseEntity<UserDto> editCustomer(@RequestBody UserDto userDto, BindingResult bindingResult, @PathVariable Integer id) {
+    public ResponseEntity<UserDto> editUser(@RequestBody UserDto userDto, BindingResult bindingResult, @PathVariable Integer id) {
 
-        if (bindingResult.hasErrors()) {
+        /*if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -93,7 +119,7 @@ public class UserController {
 
         if (userService.get(id) == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        }*/
 
         userDto.setId(id);
 
@@ -102,7 +128,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/{id}")
-    public ResponseEntity<UserDto> deleteCustomer(@PathVariable Integer id) {
+    public ResponseEntity<UserDto> deleteUser(@PathVariable Integer id) {
         userService.remove(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

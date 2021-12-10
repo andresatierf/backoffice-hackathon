@@ -3,11 +3,15 @@ package org.academiadecodigo.bootcamp65.converters;
 import org.academiadecodigo.bootcamp65.command.UserDto;
 import org.academiadecodigo.bootcamp65.model.User;
 import org.academiadecodigo.bootcamp65.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserDtotoUser extends AbstractConverter<UserDto, User>{
 
     private UserService userService;
 
+    @Autowired
     public void setUserService(UserService userService) {
         this.userService = userService;
     }
@@ -22,6 +26,14 @@ public class UserDtotoUser extends AbstractConverter<UserDto, User>{
         user.setId(userDto.getId());
         user.setLat(userDto.getLat());
         user.setLon(userDto.getLon());
+        user.setName(userDto.getName());
+        user.setImg(userDto.getImg());
+        user.setMinAge(userDto.getMinAge());
+        user.setMaxAge(userDto.getMaxAge());
+        user.setRating(userDto.getRating());
+        user.setTime(userDto.getTime());
+        user.setDuration(userDto.getDuration());
+        user.setRoomType(userDto.getRoomType());
 
         return user;
     }

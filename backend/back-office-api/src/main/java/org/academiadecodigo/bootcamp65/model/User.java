@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp65.model;
 
+import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -16,8 +17,9 @@ public class User {
     private double lon;
 
     private Integer rating;
-    private Integer time;
+    private Long time;
     private Integer duration;
+    private RoomType roomType;
 
     public Integer getId() {
         return id;
@@ -99,11 +101,11 @@ public class User {
         this.rating = rating;
     }
 
-    public Integer getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(Integer time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
@@ -113,5 +115,13 @@ public class User {
 
     public void setDuration(Integer duration) {
         this.duration = duration;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
     }
 }
