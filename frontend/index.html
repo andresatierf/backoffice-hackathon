@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back Office</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-light bg-dark">
+            <div class="container-fluid d-flex justify-content-center">
+                <img src="images/logo.png" class="image-fluid brand-logo" alt="Brand Logo">
+            </div>
+            <div class="container-fluid d-flex justify-content-center">
+                <ul class="navbar-nav d-flex justify-content-center flex-row w-50">
+                    <li class="nav-item p-1 me-5 h3">
+                        <a id="feed-button" class="nav-link active" aria-current="page">Feed</a>
+                    </li>
+                    <li class="nav-item p-1 ms-5 h3">
+                        <a id="matches-button" class="nav-link">Matches</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section id="feed-section">
+            <div class="w-50 position-static search-bar rounded container shadow p-3 d-flex justify-content-around flex-row">
+                <div class="time-picker-container">
+                    <div class="time-container">
+                        <input type="time" id="picker" name="picker" class="time-input">
+                    </div>
+                </div>
+                <div class="search-bar-menu-container">
+                    <div id="dropdown-duration" class="dropdown d-flex justify-content-center flex-row">
+                        <button id="dropdown-duration-button" class="w-100 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonDuration" data-bs-toggle="dropdown" aria-expanded="false">
+                        Duration (Minutes)
+                        </button>
+                        <ul class="dropdown-menu drop-duration" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">5</a></li>
+                            <li><a class="dropdown-item" href="#">10</a></li>
+                            <li><a class="dropdown-item" href="#">15</a></li>
+                            <li><a class="dropdown-item" href="#">20</a></li>
+                            <li><a class="dropdown-item" href="#">25</a></li>
+                            <li><a class="dropdown-item" href="#">30</a></li>
+                            <li><a class="dropdown-item" href="#">35</a></li>
+                            <li><a class="dropdown-item" href="#">40</a></li>
+                            <li><a class="dropdown-item" href="#">45</a></li>
+                            <li><a class="dropdown-item" href="#">50</a></li>
+                            <li><a class="dropdown-item" href="#">55</a></li>
+                            <li><a class="dropdown-item" href="#">60+</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="search-bar-menu-container">
+                    <div class="dropdown d-flex justify-content-center flex-row">
+                        <button id="dropdown-room-button" class="w-100 btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonRoom" data-bs-toggle="dropdown" aria-expanded="false">
+                        Room
+                    </button>
+                        <ul id="dropdown-menu" class="dropdown-menu drop-room" aria-labelledby="dropdownMenuButtonRoom">
+                            <li><a class="dropdown-item" href="#">Closet</a></li>
+                            <li><a class="dropdown-item" href="#">Elevator</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="search-bar-menu-container btn btn-danger">Search</button>
+            </div>
+
+
+            <div id="feed-cards" class="p-5 d-flex justify-content-center align-items-center flex-column" style="overflow-y:scroll;">
+                <div id="card" class="card col-12 col-lg-2 rounded card shadow p-3 mb-5 bg-body rounded">
+                    <div class="w-100 d-flex justify-content-center">
+                        <img class="profile-picture rounded-circle image-fluid" src=" images/profile-pic.png " alt="Profile Picture ">
+                    </div>
+                    <hr>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="w-75">
+                                <p class="h3 person-name">Mário Vieira</p>
+                            </div>
+                            <div>
+                                <p class="h5">Praia da Vitória</p>
+                            </div>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde blanditiis obcaecati nesciunt, ipsa maiores exercitationem corrupti. Nostrum assumenda sit temporibus aliquam eligendi sed aut. Aliquam sequi ducimus fuga facere ab,
+                            quo mollitia possimus perspiciatis culpa hic sapiente cupiditate reiciendis repudiandae.</p>
+                        <div class="d-flex justify-content-center">
+                            <button class="w-50 btn btn-danger">Let's Fuck</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="matches-section">
+
+        </section>
+    </main>
+
+
+
+    <script src="/scripts/scripts.js "></script>
+</body>
+
+</html>
