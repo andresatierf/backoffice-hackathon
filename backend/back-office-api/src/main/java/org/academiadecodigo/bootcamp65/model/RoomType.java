@@ -44,6 +44,7 @@ public enum RoomType {
         List<Room> rooms = new LinkedList<>();
         for (RoomType roomType:RoomType.values()) {
             Room room = new Room();
+            room.setRoomName(roomType);
             room.setPrice(roomType.price);
             room.setImg(roomType.img);
             room.setName(roomType.name);
@@ -53,9 +54,18 @@ public enum RoomType {
     }
 
     public static class Room {
+        private RoomType roomName;
         private double price;
         private String img;
         private String name;
+
+        public RoomType getRoomName() {
+            return roomName;
+        }
+
+        public void setRoomName(RoomType roomName) {
+            this.roomName = roomName;
+        }
 
         public double getPrice() {
             return price;
