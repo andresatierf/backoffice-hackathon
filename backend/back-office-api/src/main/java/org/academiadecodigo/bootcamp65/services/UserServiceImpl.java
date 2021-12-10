@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp65.services;
 
-import org.academiadecodigo.bootcamp65.model.User;
+import org.academiadecodigo.bootcamp65.persistence.model.User;
 
 import java.util.LinkedList;
 import java.util.List;

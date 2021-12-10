@@ -1,10 +1,9 @@
 package org.academiadecodigo.bootcamp65.services;
 
-import org.academiadecodigo.bootcamp65.model.Place;
-import org.academiadecodigo.bootcamp65.model.Room;
+import org.academiadecodigo.bootcamp65.persistence.model.Place;
+import org.academiadecodigo.bootcamp65.persistence.model.Room;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class PlaceService {
 

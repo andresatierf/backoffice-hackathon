@@ -1,8 +1,8 @@
 package org.academiadecodigo.bootcamp65.services;
 
-import org.academiadecodigo.bootcamp65.model.Place;
-import org.academiadecodigo.bootcamp65.model.Room;
-import org.academiadecodigo.bootcamp65.model.RoomType;
+import org.academiadecodigo.bootcamp65.persistence.model.Place;
+import org.academiadecodigo.bootcamp65.persistence.model.Room;
+import org.academiadecodigo.bootcamp65.persistence.model.RoomType;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class RoomsManager {
         Room room = new Room();
         room.setId(roomNr++);
         room.setRoomType(roomType);
-        room.setPlaceId(placeId);
+        room.setPlace(place);
 
         placeService.addRoom(placeId, room);
 
@@ -45,16 +45,14 @@ public class RoomsManager {
 
     }
 
-    public Room getRoom(int placeId, int roomId){
-
-        place = placeService.get(placeId);
+    public Room getRoom(Place place, int roomId){
 
         return place.getRoom(roomId);
 
     }
 
-    public int getRoomPlace(Room room){
-        return room.getPlaceId();
+    public Place getRoomPlace(Room room){
+        return room.getPlace();
     }
 }
 

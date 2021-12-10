@@ -1,20 +1,21 @@
 package org.academiadecodigo.bootcamp65.command;
 
-import org.academiadecodigo.bootcamp65.model.RoomType;
+import org.academiadecodigo.bootcamp65.persistence.model.Place;
+import org.academiadecodigo.bootcamp65.persistence.model.RoomType;
 
 public class RoomDto {
 
     private int id;
     private RoomType roomType;
     private boolean occupied;
-    private int placeId;
+    private Place place;
 
-    public int getPlaceId() {
-        return placeId;
+    public Place getPlace() {
+        return place;
     }
 
-    public void setPlaceId(int placeId) {
-        this.placeId = placeId;
+    public void setPlace(Place place) {
+        this.place = place;
     }
 
     public int getId() {

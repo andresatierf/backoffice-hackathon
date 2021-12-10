@@ -1,12 +1,11 @@
 package org.academiadecodigo.bootcamp65.services;
 
-import org.academiadecodigo.bootcamp65.model.Match;
+import org.academiadecodigo.bootcamp65.persistence.model.Match;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class MatchService {
 

@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp65.converters;
 
 import org.academiadecodigo.bootcamp65.command.PlaceDto;
-import org.academiadecodigo.bootcamp65.model.Place;
+import org.academiadecodigo.bootcamp65.persistence.model.Place;
 
 public class PlaceToPlaceDto extends AbstractConverter<Place, PlaceDto>{
 

@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp65.services;
 
-import org.academiadecodigo.bootcamp65.model.Car;
+import org.academiadecodigo.bootcamp65.persistence.model.Car;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp65;
 
-import org.academiadecodigo.bootcamp65.model.Place;
+import org.academiadecodigo.bootcamp65.persistence.model.Place;
 import org.academiadecodigo.bootcamp65.services.PlaceService;
 
 public class Main {

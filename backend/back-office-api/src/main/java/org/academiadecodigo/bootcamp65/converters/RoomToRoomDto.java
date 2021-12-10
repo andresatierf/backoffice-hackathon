@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp65.converters;
 
 import org.academiadecodigo.bootcamp65.command.RoomDto;
-import org.academiadecodigo.bootcamp65.model.Room;
+import org.academiadecodigo.bootcamp65.persistence.model.Room;
 
 public class RoomToRoomDto extends AbstractConverter<Room, RoomDto>{
 
@@ -11,7 +11,7 @@ public class RoomToRoomDto extends AbstractConverter<Room, RoomDto>{
 
         roomDto.setId(room.getId());
         roomDto.setOccupied(room.isOccupied());
-        roomDto.setPlaceId(room.getPlaceId());
+        roomDto.setPlace(room.getPlace());
         roomDto.setRoomType(room.getRoomType());
 
         return roomDto;
