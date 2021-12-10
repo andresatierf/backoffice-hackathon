@@ -70,6 +70,43 @@ public class UserController {
         return new ResponseEntity<>(filteredDtos, HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = {"/filterage"})
+    public ResponseEntity<List<UserDto>> listFilteredByAge(@RequestParam("minage") Integer minage, @RequestParam("maxage") Integer maxage) {
+        System.out.println("list sout");
+        List<UserDto> userDtos = userService.list().stream()
+                .map(customer -> userToUserDto.convert(customer))
+                .collect(Collectors.toList());
+
+        List<UserDto> filteredDtos = new LinkedList<>();
+
+        for(UserDto userDto: userDtos) {
+            if (userDto.getAge() >= minage && userDto.getMaxAge() <= maxage) {
+                filteredDtos.add(userDto);
+            }
+        }
+
+        return new ResponseEntity<>(filteredDtos, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/bonkersfilter"})
+    public ResponseEntity<List<UserDto>> bonkersFilter(@DateTimeFormat(pattern = "time") Long time, @RequestParam("duration") Integer duration, @RequestParam("room") RoomType roomType, @RequestParam("minage") Integer minage, @RequestParam("maxage") Integer maxage) {
+        System.out.println("list sout");
+        List<UserDto> userDtos = userService.list().stream()
+                .map(customer -> userToUserDto.convert(customer))
+                .collect(Collectors.toList());
+
+        List<UserDto> filteredDtos = new LinkedList<>();
+
+        for(UserDto userDto: userDtos) {
+            if (userDto.getTime() <= time && userDto.getDuration().equals(duration) && userDto.getRoomType() == roomType && userDto.getAge() >= minage && userDto.getAge() <= maxage) {
+                filteredDtos.add(userDto);
+            }
+        }
+
+        System.out.println(time);
+        return new ResponseEntity<>(filteredDtos, HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.PUT, path = "/{id}/updatematch")
     public ResponseEntity<UserDto> editUserWithParams(@RequestBody UserDto userDto, @PathVariable Integer id) {
 
