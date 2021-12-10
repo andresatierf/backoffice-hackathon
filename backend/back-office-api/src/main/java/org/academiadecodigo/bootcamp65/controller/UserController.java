@@ -132,4 +132,20 @@ public class UserController {
         userService.remove(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/login")
+    public ResponseEntity<UserDto> login(@RequestBody UserDto userDto, BindingResult bindingResult){
+
+        User user = userService.get(userDto.getId());
+
+        if(user == null){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        if(user.getPassword() != userDto.getPassword()){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

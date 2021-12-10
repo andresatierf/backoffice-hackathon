@@ -9,6 +9,10 @@ public class User {
     private String name;
     private Integer age;
     private GenderType gender;
+    private String password;
+    private String email;
+    private String city;
+    private String description;
 
     private int minAge;
     private int maxAge;
@@ -123,5 +127,37 @@ public class User {
 
     public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
+    public String getCity(){
+        return city;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public String getDescription(){
+        return description;
     }
 }

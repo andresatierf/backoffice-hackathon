@@ -6,6 +6,9 @@ import org.academiadecodigo.bootcamp65.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 @Component
 public class UserDtotoUser extends AbstractConverter<UserDto, User>{
 
@@ -34,6 +37,8 @@ public class UserDtotoUser extends AbstractConverter<UserDto, User>{
         user.setTime(userDto.getTime());
         user.setDuration(userDto.getDuration());
         user.setRoomType(userDto.getRoomType());
+        user.setEmail(userDto.getEmail());
+        user.setPassword(userDto.getPassword());
 
         return user;
     }

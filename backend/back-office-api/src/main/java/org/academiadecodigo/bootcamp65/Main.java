@@ -3,23 +3,23 @@ package org.academiadecodigo.bootcamp65;
 import org.academiadecodigo.bootcamp65.model.Place;
 import org.academiadecodigo.bootcamp65.services.PlaceService;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Main {
     public static void main(String[] args) {
 
-        PlaceService placeService = new PlaceService();
+        String userPassword = "Lmaokai";
 
-        Place place = new Place();
+        byte[] recievedPassword = userPassword.getBytes();
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        byte[] theMD5digest = md.digest(recievedPassword);
 
-        place.setId(2);
-
-        placeService.add(place);
-
-        System.out.println(place);
-        System.out.println(placeService.list());
-
-        placeService.remove(place.getId());
-
-        System.out.println("empty-");
-        System.out.println(placeService.list());
+        System.out.println(md.digest(recievedPassword));
     }
 }
