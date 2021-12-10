@@ -21,9 +21,9 @@ Overcome the fear and taboo of the society of casual sex.
 
 
 ## Collaborators
-[Mario Vieira](https://github.com/MarioWork)
-[André Freitas](https://github.com/andresatierf)
-[João Pereira](https://github.com/jpv-pereira)
-[Luís Câmara](https://github.com/shrimp16)
++ [Mario Vieira](https://github.com/MarioWork)
++ [André Freitas](https://github.com/andresatierf)
++ [João Pereira](https://github.com/jpv-pereira)
++ [Luís Câmara](https://github.com/shrimp16)
 
 
