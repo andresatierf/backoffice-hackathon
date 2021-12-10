@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Entity
-@Table(name = "places")
+@Table(name = "place")
 public class Place {
 
     private Integer id;
@@ -15,6 +15,15 @@ public class Place {
     private double lat;
     private double lon;
 
+    @OneToMany(
+        cascade = {CascadeType.ALL},
+
+        orphanRemoval = true,
+
+        mappedBy = "place",
+
+        fetch = FetchType.EAGER
+    )
     private List<Room> roomList = new ArrayList<>();
 
     @Id
@@ -50,15 +59,7 @@ public class Place {
         this.lon = lon;
     }
 
-    @OneToMany(
-        cascade = {CascadeType.ALL},
 
-        orphanRemoval = true,
-
-        mappedBy = "places",
-
-        fetch = FetchType.EAGER
-    )
     public List<Room> getRoomList() {
         return roomList;
     }

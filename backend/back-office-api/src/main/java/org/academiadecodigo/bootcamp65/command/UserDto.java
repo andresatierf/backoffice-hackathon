@@ -1,13 +1,15 @@
-package org.academiadecodigo.bootcamp65.persistence.model;
+package org.academiadecodigo.bootcamp65.command;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.academiadecodigo.bootcamp65.persistence.model.GenderType;
+import org.academiadecodigo.bootcamp65.persistence.model.RoomType;
 
-@Entity
-@Table(name = "user")
-public class User {
-    @Id
+import java.util.Date;
+
+@JsonIgnoreProperties
+public class UserDto {
     private Integer id;
     private String img;
     private String name;
@@ -20,16 +22,16 @@ public class User {
     private double lat;
     private double lon;
 
-    private int rating;
-    private long time;
-    private int duration;
+    private Integer rating;
+    private Long time;
+    private Integer duration;
     private RoomType roomType;
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,11 +51,11 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
@@ -97,35 +99,35 @@ public class User {
         this.lon = lon;
     }
 
-    public int getRating() {
+    public Integer getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Integer rating) {
         this.rating = rating;
     }
 
-    public long getTime() {
+    public Long getTime() {
         return time;
     }
 
-    public void setTime(long time) {
+    public void setTime(Long time) {
         this.time = time;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
-    }
-
-    public void setRoomType(RoomType roomType) {
-        this.roomType = roomType;
     }
 
     public RoomType getRoomType() {
         return roomType;
+    }
+
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
     }
 }

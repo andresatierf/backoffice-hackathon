@@ -18,8 +18,6 @@ public class Car implements Model {
     private String plate;
     private CarType carType;
 
-    private List<Car> plates = new ArrayList<>();
-
     @Id
     @Override
     public Integer getId() {
@@ -45,10 +43,6 @@ public class Car implements Model {
 
     public void setCarType(CarType cartype) {
         this.carType = cartype;
-    }
-
-    public List<Car> getPlates() {
-        return plates;
     }
 
 }

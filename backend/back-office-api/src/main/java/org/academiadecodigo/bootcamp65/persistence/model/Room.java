@@ -3,10 +3,13 @@ package org.academiadecodigo.bootcamp65.persistence.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "room")
 public class Room {
 
+    @Id
     private int id;
     private RoomType roomType;
     private boolean occupied;
@@ -30,7 +33,7 @@ public class Room {
         this.roomType = roomType;
     }
 
-    @Id
+
     public int getId() {
         return id;
     }
