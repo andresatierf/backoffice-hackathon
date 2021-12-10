@@ -7,23 +7,33 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="emFactory"/>
+        <property name="entityManagerFactory" ref="emFactory" />
     </bean>
 
-
+    <!-- Enable support for JPA annotations -->
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
-    <!-- H2 console -->
-    <bean id="h2WebServer" class="org.h2.tools.Server" factory-method="createWebServer" init-method="start"
-          destroy-method="stop">
-        <constructor-arg value="-web,-webAllowOthers,-webDaemon,-webPort,8082"/>
-    </bean>
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:/tmp/db/backoffice"/>
-        <property name="username" value="sa"/>
+    <!-- c3p0 database connection pool management -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost/backoffice?useSSL=false"/>
+        <property name="user" value="root"/>
         <property name="password" value=""/>
+
+        <!-- c3p0 database connection pool management properties -->
+        <property name="minPoolSize" value="1"/>
+        <property name="maxPoolSize" value="10"/>
+        <property name="acquireIncrement" value="1"/>
+        <property name="maxStatements" value="0"/>
+
+        <!-- destroy idle pool after 300ms -->
+        <property name="idleConnectionTestPeriod" value="300"/>
+
+        <!-- destroy db connection if it fails to login after 7200ms -->
+        <property name="loginTimeout" value="7200"/>
+
     </bean>
 
     <bean id="emFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -35,15 +45,15 @@
         </property>
         <property name="jpaProperties">
             <map>
-                <entry key="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-                <entry key="hibernate.show_sql" value="true"/>
-                <entry key="hibernate.hbm2ddl.auto" value="create"/>
+                <entry key="hibernate.show_sql" value="true" />
+                <entry key="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
 
-                <!-- Insert test data if dev.schema.auto property set to create -->
+                <!-- Run as create once to initialize the schema -->
+                <!--<entry key="hibernate.hbm2ddl.auto" value="validate"/>-->
                 <entry key="hibernate.hbm2ddl.import_files" value="db/test-data.sql"/>
                 <entry key="hibernate.hbm2ddl.import_files_sql_extractor"
                        value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor"/>
-
+                <entry key="hibernate.hbm2ddl.auto" value="create"/>
             </map>
         </property>
     </bean>
