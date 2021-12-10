@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp65.model.User;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public interface UserService {
 
@@ -16,4 +17,8 @@ public interface UserService {
     User update(User user);
 
     User get(Integer id);
+
+    User getByName(String name);
+
+    Map getNamePW();
 }

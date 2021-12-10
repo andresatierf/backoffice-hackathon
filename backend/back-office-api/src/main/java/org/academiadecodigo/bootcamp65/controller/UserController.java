@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -102,6 +103,10 @@ public class UserController {
 
         User savedUser = userService.save(userDtotoUser.convert(userDto));
 
+        if(savedUser == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
         System.out.println("added");
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -135,17 +140,17 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/login")
     public ResponseEntity<UserDto> login(@RequestBody UserDto userDto, BindingResult bindingResult){
+        System.out.println(userDto.getName());
+        User user = userService.getByName(userDto.getName());
 
-        User user = userService.get(userDto.getId());
+        System.out.println(user.getName());
+        System.out.println(user.getPassword());
 
-        if(user == null){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        System.out.println("motherfucker");
+
+        if(user.getPassword().equals(userDto.getPassword())){
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-
-        if(user.getPassword() != userDto.getPassword()){
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
-
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     }
 }
