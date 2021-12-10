@@ -2,7 +2,7 @@ import { getMatches } from './matches.js';
 import { getUsers } from './feed.js';
 import { getRoomTypes } from './searchDropdowns.js'
 
-var url_prefix = "http://192.168.1.113:8080/back-office/api"
+var url_prefix = "http://192.168.1.21:8080/back-office/api"
 var carTypes;
 
 export { carTypes };

@@ -1,27 +1,53 @@
 import { carTypes } from "./events.js";
 
-var url_prefix = "http://192.168.1.113:8080/back-office/api"
+var url_prefix = "http://192.168.1.21:8080/back-office/api"
 var roomType;
 
-export function getMatches(userId) {
+var userId;
+export function getMatches(userId_) {
+    userId = userId_;
     console.log("called getMatches");
     var url = url_prefix + "/match/" + userId
 
     $.ajax({
         url: url,
         async: true,
-        success: populateMatches,
+        success: getFinalMatches,
+        error: undefined
+
+    });
+}
+
+function getFinalMatches(){
+    var url = url_prefix + "/match/" + userId + "/all"
+    $.ajax({
+        url: url,
+        async: true,
+        success: getAllMatches,
         error: undefined
     });
 }
 
+function getAllMatches (data) {
+    data.forEach(item => {
+        var url = url_prefix + "/user/" + item.user2Id
+        $.ajax({
+            url: url,
+            async: true,
+            success: populateMatches,
+            error: undefined
+        });
+    });
+}
+
 function populateMatches(data) {
+    console.log(data);
     var matchesCardsContainer = $("#matches-cards");
 
     data.forEach(item => {
         var cardDiv = $("<div></div>");
         cardDiv.attr("class", "card-matches card col-12 col-lg-2 rounded card shadow p-3 mb-5 bg-body");
-
+        matchesCardsContainer.append(cardDiv);
 
         //Header
 
@@ -83,7 +109,7 @@ function populateMatches(data) {
 
         var dropdownButton = $("<button></button>");
         dropdownButton.attr("class", "w-100 btn btn-secondary dropdown-toggle");
-        dropdownButton.attr("id", "dropdown-car-button");
+        dropdownButton.attr("id", "dropdown-car-button-" + item.id);
         dropdownButton.attr("type", "button");
         dropdownButton.attr("data-bs-toggle", "dropdown");
         dropdownButton.attr("aria-expanded", "false");
@@ -145,6 +171,8 @@ function populateMatches(data) {
         finishButton.attr("class", "w-50 btn btn-danger");
         finishButton.text("Finish");
         finishButtonContainer.append(finishButton);
+
+
     });
 
 

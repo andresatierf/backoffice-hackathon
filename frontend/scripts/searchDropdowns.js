@@ -1,4 +1,4 @@
-var url_prefix = "http://192.168.1.113:8080/back-office/api"
+var url_prefix = "http://192.168.1.21:8080/back-office/api"
 
 
 export function getRoomTypes() {
