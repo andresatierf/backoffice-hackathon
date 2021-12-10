@@ -1,9 +1,15 @@
-package org.academiadecodigo.bootcamp65.model;
+package org.academiadecodigo.bootcamp65.command;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import org.academiadecodigo.bootcamp65.model.GenderType;
+import org.academiadecodigo.bootcamp65.model.RoomType;
 
 import java.util.Date;
-import java.util.List;
 
-public class User {
+@JsonIgnoreProperties
+public class UserDto {
     private Integer id;
     private String img;
     private String name;
