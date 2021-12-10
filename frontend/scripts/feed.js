@@ -3,10 +3,10 @@ var url_prefix = "http://192.168.1.21:8080/back-office/api"
 
 export function getUsers(time, duration, room) {
     console.log("Called getUsers");
-    var url = url_prefix + "/user";
-    //"/filter?time=" + time + "&duration=" + duration + "&room=" + room;
-    console.log(url);
+    var url = url_prefix + "/user/filter?time=" + time + "&duration=" + duration + "&room=" + room;
 
+    console.log(url);
+    console.log(url);
     $.ajax({
         method: "GET",
         url: url,
@@ -19,12 +19,18 @@ export function getUsers(time, duration, room) {
 
 function populateFeed(data) {
     var feedCardsContainer = $("#feed-cards");
+    feedCardsContainer.empty();
 
     data.forEach(item => {
         var cardDiv = $("<div></div>");
         cardDiv.id = "card";
         cardDiv.attr("class", "card col-12 col-lg-2 rounded card shadow p-3 mb-5 bg-body");
 
+        var id = $("<p></p>");
+        id.attr("id", "personID");
+        id.css("display", "none");
+        id.text(item.id);
+        cardDiv.append(id);
 
         var profilePictureDiv = $("<div></div>");
         profilePictureDiv.attr("class", "w-100 d-flex justify-content-center");
@@ -35,7 +41,6 @@ function populateFeed(data) {
         profilePicture.attr("class", "profile-picture rounded-circle image-fluid");
         profilePicture.attr("alt", "Profile Picture");
         profilePictureDiv.append(profilePicture);
-
 
         var divider = $("<hr>");
         cardDiv.append(divider);
@@ -62,7 +67,7 @@ function populateFeed(data) {
 
         var location = $("<p></p>");
         location.attr("class", "h5");
-        location.text(item.city)
+        location.text(item.location)
         locationContainer.append(location);
 
         var description = $("<p></p>");
@@ -76,10 +81,37 @@ function populateFeed(data) {
         var button = $("<button></button>");
         button.attr("class", "w-50 btn btn-danger");
         button.text("Let's Boink!");
+        button.click(function() {
+            console.log("Add Match");
+            var url = url_prefix + "/match/";
+            console.log(url);
+
+            $.ajax({
+                method: "POST",
+                url: url,
+                data: JSON.stringify({
+                    user1Id: parseInt($("#userID").text()),
+                    user2Id: item.id,
+                    room: {
+                        roomType: $("#dropdown-room-button").attr("value")
+                    },
+                    time: $("#dropdown-duration-button").attr("value"),
+                    finalPrice: 0
+                }),
+                contentType: 'application/json',
+                async: true,
+                success: populateFeed,
+                error: undefined
+            });
+        });
         buttonDiv.append(button);
 
         feedCardsContainer.append(cardDiv);
     });
+
+
+
+
 
     /* <div id="card" class="card col-12 col-lg-2 rounded card shadow p-3 mb-5 bg-body">
                     <div class="w-100 d-flex justify-content-center">
