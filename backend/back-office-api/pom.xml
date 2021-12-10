@@ -83,8 +83,8 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://localhost:8080/manager/text</url>
-                    <server>tomcat</server>
+                    <url>http://192.168.1.79:8080/manager/text</url>
+                    <server>tomcat-ac</server>
                     <path>/back-office</path>
                 </configuration>
             </plugin>
