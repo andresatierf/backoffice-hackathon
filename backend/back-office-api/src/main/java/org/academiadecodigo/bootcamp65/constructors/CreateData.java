@@ -104,6 +104,25 @@ public class CreateData implements InitializingBean {
                 GenderType.MALE
         };
 
+        String[] messages = {
+                "I wish there was a way to know you're in the good old days, before you've actually left them",
+                "I don't back down!",
+                "Do you want to see a foot with four toes?",
+                "In The Gang World We Use Something Called Fluffy Fingers.",
+                "When someone smiles at me, all I see is a chimpanzee begging for its life.",
+                "I boiled some Gatorade.",
+                "I am about to do something very bold in this job that I've never done before: try.",
+                "Who am I? I'm Kelly Kapoor, the business bitch.",
+                "YOU GO TO THE BATHROOM FOR 45 MINUTES AND EVERYTHING CHANGES.",
+                "Cronkite was hot. If I could go back in time, I'd take that moustache ride.",
+                "And I knew exactly what to do. But in a much more real sense, I had no idea what to do.",
+                "KIDS, SOMETIMES, IT PAYS TO BE GAY.",
+                "THERE'S NOTHING BETTER THAN A BEAUTIFUL DAY AT THE BEACH.",
+                "I JUST THINK WE ALL DESERVE TO BE WITH SOMEONE WHO WANTS TO BE WITH US.",
+                "I'M SUCH A PERFECTIONIST THAT I'D KINDA RATHER NOT DO IT AT ALL THAN DO A CRAPPY VERSION.",
+                "I Do Not Like Pregnant Women In My Workspace.",
+                "What are you guys talking about? I have a daughter, how can I be a virgin?"
+        };
         String[] locations = {
                 "Praia da Vitoria",
                 "Angra do Heroismo",
@@ -112,7 +131,7 @@ public class CreateData implements InitializingBean {
         };
 
         for (int i = 0; i < names.length; i++) {
-            User user = new User(i, pics[i], names[i], (int) (Math.random() * 30) + 25, gender[i], 20, 60,23435930L,15, RoomType.values()[(int)(Math.random() * RoomType.values().length)], "This is the default message", locations[(int) (Math.random() * locations.length)], "NullPointerException()");
+            User user = new User(i, pics[i], names[i], (int) (Math.random() * 30) + 25, gender[i], 20, 60, 23435930L, 15, RoomType.values()[(int) (Math.random() * RoomType.values().length)], messages[i], locations[(int) (Math.random() * locations.length)], "NullPointerException()");
             userService.save(user);
         }
     }
