@@ -17,15 +17,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
 
     private UserService userService;
-    private UserDtotoUser userDtotoUser;
+    private UserDtotoUser userDtoToUser;
     private UserToUserDto userToUserDto;
-
-
 
     @Autowired
     public void setUserService(UserService userService) {
@@ -33,8 +32,8 @@ public class UserController {
     }
 
     @Autowired
-    public void setUserDtotoUser(UserDtotoUser userDtotoUser) {
-        this.userDtotoUser = userDtotoUser;
+    public void setUserDtoToUser(UserDtotoUser userDtoToUser) {
+        this.userDtoToUser = userDtoToUser;
     }
 
     @Autowired
@@ -44,7 +43,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
     public ResponseEntity<List<UserDto>> listUsers() {
-        System.out.println("list sout");
         List<UserDto> userDtos = userService.list().stream()
                 .map(customer -> userToUserDto.convert(customer))
                 .collect(Collectors.toList());
@@ -54,7 +52,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET, path = {"/filter"})
     public ResponseEntity<List<UserDto>> listFilteredUsers(@DateTimeFormat(pattern = "time") Long time, @RequestParam("duration") Integer duration, @RequestParam("room") RoomType roomType) {
-        System.out.println("list sout");
         List<UserDto> userDtos = userService.list().stream()
                 .map(customer -> userToUserDto.convert(customer))
                 .collect(Collectors.toList());
@@ -67,6 +64,8 @@ public class UserController {
             }
         }
 
+        filteredDtos.sort((t1, t2) -> (int) (t1.getTime() - t2.getTime()));
+
         System.out.println(time);
         return new ResponseEntity<>(filteredDtos, HttpStatus.OK);
     }
@@ -76,7 +75,7 @@ public class UserController {
 
         userDto.setId(id);
 
-        userService.save(userDtotoUser.convert(userDto));
+        userService.save(userDtoToUser.convert(userDto));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -100,7 +99,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }*/
 
-        User savedUser = userService.save(userDtotoUser.convert(userDto));
+        User savedUser = userService.save(userDtoToUser.convert(userDto));
 
         System.out.println("added");
         return new ResponseEntity<>(HttpStatus.CREATED);
@@ -123,7 +122,7 @@ public class UserController {
 
         userDto.setId(id);
 
-        userService.save(userDtotoUser.convert(userDto));
+        userService.save(userDtoToUser.convert(userDto));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
