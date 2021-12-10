@@ -1,0 +1,163 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-link {
+    color: white !important;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: #dc3545 !important;
+}
+
+.profile-picture {
+    width: 300px;
+    height: 300px;
+    background-position: center;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.profile-matches-picture {
+    width: 50%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+    margin-bottom: 10%;
+    margin-top: 10%;
+}
+
+.brand-logo {
+    width: 50%;
+    object-fit: contain;
+    padding-left: 5em;
+}
+
+.card-matches {
+    padding-top: 0px!important;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+.room-image {
+    object-fit: cover;
+    width: 100%;
+    height: 71.2%;
+    z-index: 0;
+    opacity: 0.4;
+    border-radius: 5% 5% 0% 0%;
+}
+
+.matches-images-container {
+    background-color: gray;
+    border-radius: 5% 5% 0% 0%;
+}
+
+.card {
+    width: 40%;
+}
+
+.person-name {
+    color: #dc3545;
+}
+
+.person-name-matches {
+    color: white;
+}
+
+.person-location-matches {
+    color: white;
+}
+
+.person-info-matches-container {
+    z-index: 1;
+}
+
+.person-image-matches-container {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.main {
+    background-color: lightgray;
+}
+
+.search-bar {
+    background-color: white;
+}
+
+.time-container {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    text-align: center;
+}
+
+.time-input {
+    color: #fff;
+    background-color: #6c757d;
+    border: 0px;
+    text-align: center;
+}
+
+.time-picker-container {
+    width: 15%;
+}
+
+.search-bar-menu-container {
+    width: 25%;
+}
+
+#matches-section {
+    display: none;
+}
+
+.body-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 5%!important;
+}
+
+@media (max-width: 1000px) {
+    .card {
+        width: 95%;
+    }
+    .brand-logo {
+        width: 100%;
+        padding-left: 0;
+    }
+    #feed-cards {
+        padding: 0!important;
+    }
+    .search-bar {
+        flex-direction: column!important;
+        width: 100%!important;
+        margin-bottom: 1em;
+    }
+    .time-picker-container {
+        width: 100%;
+    }
+    .search-bar-menu-container {
+        margin-top: 1em;
+        width: 100%!important;
+    }
+    .room-image {
+        height: 55%;
+    }
+}
