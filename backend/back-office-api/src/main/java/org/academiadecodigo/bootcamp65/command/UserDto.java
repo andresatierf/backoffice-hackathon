@@ -27,6 +27,10 @@ public class UserDto {
     private Integer duration;
     private RoomType roomType;
 
+    private String description;
+    private String location;
+    private String password;
+
     public Integer getId() {
         return id;
     }
@@ -129,5 +133,29 @@ public class UserDto {
 
     public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

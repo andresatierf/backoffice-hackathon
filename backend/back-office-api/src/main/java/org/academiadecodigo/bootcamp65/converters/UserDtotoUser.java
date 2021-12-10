@@ -34,6 +34,9 @@ public class UserDtotoUser extends AbstractConverter<UserDto, User>{
         user.setTime(userDto.getTime());
         user.setDuration(userDto.getDuration());
         user.setRoomType(userDto.getRoomType());
+        user.setDescription(userDto.getDescription());
+        user.setLocation(userDto.getLocation());
+        user.setPassword(userDto.getPassword());
 
         return user;
     }

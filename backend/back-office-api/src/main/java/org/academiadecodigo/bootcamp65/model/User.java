@@ -21,6 +21,29 @@ public class User {
     private Integer duration;
     private RoomType roomType;
 
+    private String description;
+    private String location;
+    private String password;
+
+    public User() {
+    }
+
+    public User(Integer id, String img, String name, Integer age, GenderType gender, int minAge, int maxAge, Long time, Integer duration, RoomType roomType, String message, String location, String password) {
+        this.id = id;
+        this.img = img;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+        this.minAge = minAge;
+        this.maxAge = maxAge;
+        this.time = time;
+        this.duration = duration;
+        this.roomType = roomType;
+        this.description = message;
+        this.location = location;
+        this.password = password;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -123,5 +146,29 @@ public class User {
 
     public void setRoomType(RoomType roomType) {
         this.roomType = roomType;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

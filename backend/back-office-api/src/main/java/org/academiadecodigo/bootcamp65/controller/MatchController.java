@@ -41,6 +41,11 @@ public class MatchController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
+    public ResponseEntity<List<MatchDto>> allMatches() {
+        return new ResponseEntity<>(matchToMatchDto.convert(matchService.list()), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
     public ResponseEntity<Match> showMatch(@PathVariable Integer id) {
 
         List<Match> matches = matchService.list();
@@ -50,7 +55,6 @@ public class MatchController {
                 .collect(Collectors.toList());
 
         Integer pos = null;
-        outer:
         for (int i = 0; i < filtered.size(); i++) {
             for (int j = i + 1; j < filtered.size(); j++) {
                 if (filtered.get(i).getUser1Id().equals(filtered.get(j).getUser2Id()) &&
@@ -58,7 +62,7 @@ public class MatchController {
                     matchService.remove(filtered.get(i).getId());
                     matchService.remove(filtered.get(j).getId());
                     pos = i;
-                    break outer;
+                    matchService.addFinal(filtered.get(i));
                 }
             }
         }
@@ -70,8 +74,8 @@ public class MatchController {
         return new ResponseEntity<>(filtered.get(pos), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/{id}"})
-    public ResponseEntity<List<Match>> getPreMatched(@PathVariable Integer id, BindingResult bindingResult) {
+    @RequestMapping(method = RequestMethod.GET, path = {"/{id}/all"})
+    public ResponseEntity<List<Match>> getPreMatched(@PathVariable Integer id) {
         return new ResponseEntity<>(matchService.list(id), HttpStatus.OK);
     }
 
