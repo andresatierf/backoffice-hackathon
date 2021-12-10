@@ -41,13 +41,38 @@ public class MatchController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/", ""})
-    public ResponseEntity<List<Match>> listMatches() {
-        return new ResponseEntity<>(matchService.list(), HttpStatus.OK);
+    public ResponseEntity<Match> showMatch(@PathVariable Integer id) {
+
+        List<Match> matches = matchService.list();
+
+        List<Match> filtered = matches.stream()
+                .filter(match -> match.getUser1Id() == id || match.getUser2Id() == id)
+                .collect(Collectors.toList());
+
+        Integer pos = null;
+        outer:
+        for (int i = 0; i < filtered.size(); i++) {
+            for (int j = i + 1; j < filtered.size(); j++) {
+                if (filtered.get(i).getUser1Id().equals(filtered.get(j).getUser2Id()) &&
+                        filtered.get(i).getUser2Id().equals(filtered.get(j).getUser1Id())) {
+                    matchService.remove(filtered.get(i).getId());
+                    matchService.remove(filtered.get(j).getId());
+                    pos = i;
+                    break outer;
+                }
+            }
+        }
+
+        if (pos == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(filtered.get(pos), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    public ResponseEntity<Match> showUser(@PathVariable Integer id) {
-        return new ResponseEntity<>(matchService.get(id), HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.GET, path = {"/{id}"})
+    public ResponseEntity<List<Match>> getPreMatched(@PathVariable Integer id, BindingResult bindingResult) {
+        return new ResponseEntity<>(matchService.list(id), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/", ""})

@@ -19,6 +19,10 @@ public class MatchService {
         return new ArrayList<>(matches.values());
     }
 
+    public List<Match> list(int id) {
+        return new ArrayList<>(matches.values()).stream().filter(match -> match.getUser1Id() == id).collect(Collectors.toList());
+    }
+
     public Match get(int id) {
         return matches.get(id);
     }
