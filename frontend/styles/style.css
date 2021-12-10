@@ -15,14 +15,18 @@
 }
 
 .profile-picture {
-    width: 300px;
-    height: 300px;
+    width: 300px!important;
+    height: 300px!important;
     background-position: center;
-    object-fit: cover;
+    object-fit: cover!important;
     z-index: 1;
 }
 
 .profile-matches-picture {
+    width: 300px!important;
+    height: 300px!important;
+    background-position: center;
+    object-fit: cover!important;
     width: 50%;
     height: 100%;
     object-fit: contain;
@@ -46,7 +50,7 @@
 .room-image {
     object-fit: cover;
     width: 100%;
-    height: 71.2%;
+    height: 68.2%;
     z-index: 0;
     opacity: 0.4;
     border-radius: 5% 5% 0% 0%;
@@ -158,6 +162,6 @@
         width: 100%!important;
     }
     .room-image {
-        height: 55%;
+        height: 65.4%;
     }
 }
