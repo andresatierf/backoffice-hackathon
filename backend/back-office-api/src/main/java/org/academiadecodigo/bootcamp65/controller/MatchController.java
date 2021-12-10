@@ -4,6 +4,8 @@ import org.academiadecodigo.bootcamp65.command.MatchDto;
 import org.academiadecodigo.bootcamp65.command.UserDto;
 import org.academiadecodigo.bootcamp65.converters.MatchDtotoMatch;
 import org.academiadecodigo.bootcamp65.converters.MatchToMatchDto;
+import org.academiadecodigo.bootcamp65.model.Car;
+import org.academiadecodigo.bootcamp65.model.CarType;
 import org.academiadecodigo.bootcamp65.model.Match;
 import org.academiadecodigo.bootcamp65.model.User;
 import org.academiadecodigo.bootcamp65.services.MatchService;
@@ -13,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,13 +65,16 @@ public class MatchController {
                     matchService.remove(filtered.get(i).getId());
                     matchService.remove(filtered.get(j).getId());
                     pos = i;
-                    matchService.addFinal(filtered.get(i));
+                    Match match = filtered.get(i);
+                    match.setCar(new Car());
+                    match.getCar().setCarType(CarType.ECONOMY);
+                    matchService.addFinal(match);
                 }
             }
         }
 
         if (pos == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.OK);
         }
 
         return new ResponseEntity<>(filtered.get(pos), HttpStatus.OK);
@@ -76,7 +82,7 @@ public class MatchController {
 
     @RequestMapping(method = RequestMethod.GET, path = {"/{id}/all"})
     public ResponseEntity<List<Match>> getPreMatched(@PathVariable Integer id) {
-        return new ResponseEntity<>(matchService.list(id), HttpStatus.OK);
+        return new ResponseEntity<>(matchService.listFinal(id), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/", ""})

@@ -33,6 +33,9 @@ public class Match {
     }
 
     public Integer getId() {
+        if (id == null) {
+            id = (int)(Math.random() * 100000000000L);
+        }
         return id;
     }
 

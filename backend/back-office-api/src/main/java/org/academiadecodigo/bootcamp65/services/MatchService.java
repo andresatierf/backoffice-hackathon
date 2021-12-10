@@ -36,8 +36,10 @@ public class MatchService {
         matches.remove(id);
     }
 
-    public List<Match> listMatches() {
-        return new ArrayList<>(finalMatches.values());
+    public List<Match> listFinal(int id) {
+        return finalMatches.values().stream()
+                .filter(match -> match.getUser1Id() == id || match.getUser2Id() == id)
+                .collect(Collectors.toList());
     }
 
     public void addFinal(Match match) {
